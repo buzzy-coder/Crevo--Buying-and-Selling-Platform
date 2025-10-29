@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crevo | Buyer Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fde2e4, #dfe7fd, #cddafd);
+      background-size: 300% 300%;
+      animation: gradientMove 10s ease infinite;
+      min-height: 100vh;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 1.2rem;
+      color: #7b2cbf;
+      font-weight: 600;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .login-box {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem 3rem;
+      width: 350px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      color: #4a148c;
+      margin-bottom: 1rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: 1px solid #bbb;
+      outline: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      margin-top: 12px;
+      background: linear-gradient(90deg, #a78bfa, #fcb1ff);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(123,44,191,0.4);
+    }
+
+    .switch {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .switch a {
+      color: #7b2cbf;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .switch a:hover {
+      text-decoration: underline;
+    }
+
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <header>🛍️ Crevo — Buyer Portal</header>
+
+  <main>
+    <div class="login-box" id="loginBox">
+      <h2>Buyer Login</h2>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button class="btn">Login</button>
+      <div class="switch">
+        Don’t have an account? <a href="#" onclick="toggleForm()">Sign up</a>
+      </div>
+    </div>
+
+    <div class="login-box hidden" id="signupBox">
+      <h2>Create Buyer Account</h2>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <input type="text" placeholder="City / Country" required>
+      <button class="btn">Sign Up</button>
+      <div class="switch">
+        Already have an account? <a href="#" onclick="toggleForm()">Login</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>© 2025 Crevo | Where Art Finds Its Voice</footer>
+
+  <script>
+    function toggleForm(){
+      document.getElementById("loginBox").classList.toggle("hidden");
+      document.getElementById("signupBox").classList.toggle("hidden");
+    }
+  </script>
+</body>
+</html>

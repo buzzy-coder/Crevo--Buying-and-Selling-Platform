@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crevo | Seller Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+
+    body {
+      background: linear-gradient(135deg, #fff0e5, #ffd6a5, #fcd5ce);
+      background-size: 300% 300%;
+      animation: gradientShift 10s ease infinite;
+      min-height: 100vh;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 1.2rem;
+      color: #ff6f00;
+      font-weight: 600;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .login-box {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem 3rem;
+      width: 420px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    h2 {
+      color: #e65100;
+      margin-bottom: 1rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    textarea { resize: none; }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      margin-top: 12px;
+      background: linear-gradient(90deg, #ffafbd, #ffc3a0);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(255,167,38,0.4);
+    }
+
+    .switch {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .switch a {
+      color: #e65100;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .switch a:hover {
+      text-decoration: underline;
+    }
+
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <header>🎨 Crevo — Seller Portal</header>
+
+  <main>
+    <div class="login-box" id="loginBox">
+      <h2>Seller Login</h2>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button class="btn">Login</button>
+      <div class="switch">
+        New to Crevo? <a href="#" onclick="toggleForm()">Register as Seller</a>
+      </div>
+    </div>
+
+    <div class="login-box hidden" id="signupBox">
+      <h2>Create Seller Account</h2>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <input type="text" placeholder="Art Category (Painting, Digital, Craft, etc.)" required>
+      <input type="text" placeholder="Portfolio / Instagram Link">
+      <textarea rows="3" placeholder="Short Bio — Tell us about your art journey"></textarea>
+      <input type="text" placeholder="Location / City" required>
+      <select required>
+        <option value="" disabled selected>Experience Level</option>
+        <option>Beginner</option>
+        <option>Intermediate</option>
+        <option>Professional</option>
+      </select>
+      <button class="btn">Create Seller Account</button>
+      <div class="switch">
+        Already have an account? <a href="#" onclick="toggleForm()">Login</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>© 2025 Crevo | Crafted for Artists by Artists</footer>
+
+  <script>
+    function toggleForm(){
+      document.getElementById("loginBox").classList.toggle("hidden");
+      document.getElementById("signupBox").classList.toggle("hidden");
+    }
+  </script>
+</body>
+</html>

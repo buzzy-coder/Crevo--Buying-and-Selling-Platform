@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crevo Intro</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ffe0e9, #fff6d3, #d7f9f1);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      animation: bgShift 8s infinite alternate ease-in-out;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    @keyframes bgShift {
+      0% { background: linear-gradient(135deg, #ffe0e9, #fff6d3, #d7f9f1); }
+      50% { background: linear-gradient(135deg, #ffd6f6, #e7f8ff, #f7f0d6); }
+      100% { background: linear-gradient(135deg, #fcd5ce, #fae1dd, #f8edeb); }
+    }
+
+    .crevo-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 130px;
+      color: #5b2c6f;
+      text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      border-right: 5px solid #5b2c6f;
+      animation: typing 3.5s steps(10) 1s forwards, blink 0.6s step-end infinite alternate;
+    }
+
+    @keyframes typing {
+      0% { width: 0; }
+      100% { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .paint-stroke {
+      position: absolute;
+      bottom: -15px;
+      height: 6px;
+      width: 0;
+      background: linear-gradient(90deg, #d16ba5, #86a8e7, #5ffbf1);
+      border-radius: 4px;
+      animation: stroke 3s ease-in-out 4s forwards;
+      box-shadow: 0px 0px 20px rgba(91, 44, 111, 0.4);
+    }
+
+    @keyframes stroke {
+      0% { width: 0; transform: translateX(-100px); opacity: 0; }
+      20% { opacity: 1; }
+      100% { width: 110%; transform: translateX(0); opacity: 1; }
+    }
+
+    .tagline {
+      font-size: 24px;
+      color: #333;
+      margin-top: 40px;
+      opacity: 0;
+      text-align: center;
+      animation: fadeIn 2.5s ease-in 6.8s forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="crevo-container">
+    <h1>Crevo</h1>
+    <div class="paint-stroke"></div>
+    <div class="tagline">Where creativity meets appreciation 🎨</div>
+  </div>
+
+  <script>
+    // Fade out and redirect
+    setTimeout(() => {
+      document.body.classList.add('fade-out');
+    }, 9000);
+
+    setTimeout(() => {
+      window.location.href = "crevo_main.html";
+    }, 10500);
+  </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crevo Marketplace</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #c7f9cc, #e4c1f9, #a9def9);
+      color: #333;
+      min-height: 100vh;
+      animation: colorShift 10s infinite alternate ease-in-out;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards, colorShift 10s infinite alternate ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes colorShift {
+      0% {
+        background: linear-gradient(135deg, #c7f9cc, #e4c1f9, #a9def9);
+      }
+
+      50% {
+        background: linear-gradient(135deg, #fbc4ab, #ffdab9, #e4c1f9);
+      }
+
+      100% {
+        background: linear-gradient(135deg, #a0c4ff, #bdb2ff, #ffc6ff);
+      }
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 80px;
+    }
+
+    header h2 {
+      color: #6a1b9a;
+      font-weight: 700;
+      font-size: 32px;
+    }
+
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #6a1b9a;
+    }
+
+    .main-content {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .main-content h1 {
+      font-size: 42px;
+      color: #111;
+    }
+
+    .main-content h1 span {
+      color: #6a1b9a;
+    }
+
+    .main-content p {
+      color: #555;
+      margin: 15px 0 50px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      width: 300px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+    }
+
+    .card img {
+      width: 70px;
+      height: 70px;
+    }
+
+    .card h3 {
+      color: #6a1b9a;
+      margin-top: 15px;
+      font-size: 22px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+      margin: 10px 0 25px;
+    }
+
+    a {
+      border: none;
+      outline: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-size: 15px;
+      cursor: pointer;
+      color: white;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+
+    a:hover {
+      transform: scale(1.05);
+    }
+
+    .buyer-btn,
+    .seller-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .buyer-btn:hover,
+    .seller-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .buyer-btn {
+      background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+    }
+
+    .seller-btn {
+      background: linear-gradient(90deg, #89f7fe, #66a6ff);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 100px;
+      font-size: 14px;
+      color: #444;
+      padding-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2>🎨 Crevo</h2>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Artists</a>
+      <a href="#">Contact</a>
+      <a href="#">Gallery</a>
+      <a href="#">Services</a>
+    </nav>
+  </header>
+
+  <div class="main-content">
+    <h1>Welcome to <span>Crevo Marketplace</span></h1>
+    <p>Choose how you'd like to get started</p>
+
+    <div class="cards">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Buyer Icon">
+        <h3>I Want To Buy</h3>
+        <p>Browse creative artworks from talented artists worldwide. Secure payments & track shipments easily.</p>
+        <a class="buyer-btn" href="buyer.html">Start as a Buyer</a>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3593/3593440.png" alt="Seller Icon">
+        <h3>I Want To Sell</h3>
+        <p>Share your art and reach thousands of collectors globally. Showcase and track your earnings.</p>
+        <a class="seller-btn" href="seller.html">Register as a Seller</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Crevo | Crafted for Artists by Artists
+  </footer>
+</body>
+
+</html>
