@@ -7,6 +7,7 @@
   <title>Crevo Marketplace</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  
 </head>
 
 <!-- Floating Support Chat Button -->
@@ -27,9 +28,12 @@
     <nav>
       <a href="#">Home</a>
       <a href="#gallery">Gallery</a>
+      <a href="#artists">Artists</a>
+      <a href="#blogs">Blogs</a>
       <a href="#contact">Contact</a>
       <a href="#login" class="login-btn">Login</a>
     </nav>
+
   </header>
 
   <!-- HERO SECTION -->
@@ -41,10 +45,26 @@
           space.</p>
         <a href="#gallery" class="cta-btn">Explore Gallery</a>
       </div>
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=80"
-          alt="Creative Art">
+      <!-- === HERO IMAGE SLIDER === -->
+      <div class="hero-slider">
+        <div class="slide active">
+          <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=1200&q=80"
+            alt="Artwork 1">
+        </div>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1526318472351-bc6f013210ae?auto=format&fit=crop&w=1200&q=80"
+            alt="Artwork 2">
+        </div>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80"
+            alt="Artwork 3">
+        </div>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+            alt="Artwork 4">
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -150,6 +170,29 @@
     </div>
   </section>
 
+  <!-- === BLOGS SECTION === -->
+  <section id="blogs" class="blogs-section">
+    <div class="blogs-container">
+      <div class="blogs-text">
+        <h2>📝 Discover Our Blogs</h2>
+        <p>
+          Explore stories, inspirations, and creative journeys of artists from around the world.
+          Learn what fuels their passion, how they craft their art, and why every creation has a story waiting to be
+          told.
+          Our blogs are the bridge between imagination and inspiration — perfect for anyone who loves to know the “why”
+          behind art.
+        </p>
+        <a href="blogs.html" class="blog-btn">Read Our Blogs</a>
+      </div>
+
+      <div class="blogs-image">
+        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1000&q=80"
+          alt="Art Blog Inspiration">
+      </div>
+    </div>
+  </section>
+
+
   <section id="contact">
     <h2>Contact & Support</h2>
     <p>Have questions or need assistance? Reach out to our support team anytime!</p>
@@ -176,37 +219,7 @@
   </section>
   <footer>© 2025 Crevo | Crafted for Artists by Artists</footer>
 
-  <script>
-    const overlay = document.getElementById('scrollOverlay');
-    const galleryTop = document.getElementById('gallery').offsetTop - 200;
-    const contactTop = document.getElementById('contact').offsetTop - 200;
-    const header = document.querySelector("header");
-    const hero = document.querySelector(".hero-section");
-
-    window.addEventListener('scroll', () => {
-      let scrollY = window.scrollY;
-      const heroHeight = hero.offsetHeight - 80;
-
-      // Background scroll effect
-      if (scrollY < galleryTop) {
-        overlay.style.background = 'linear-gradient(135deg, #fce1ec, #e5d4ff)';
-      } else if (scrollY >= galleryTop && scrollY < contactTop) {
-        overlay.style.background = 'linear-gradient(135deg, #c6e6ff, #dcd0ff)';
-      } else {
-        overlay.style.background = 'linear-gradient(135deg, #d0fff2, #b3f3e6)';
-      }
-
-      // Navbar hide/show logic
-      if (scrollY > heroHeight) {
-        header.classList.add("hidden");  // Hide navbar when scrolled below hero
-      } else {
-        header.classList.remove("hidden"); // Show navbar on hero
-      }
-    });
-    document.getElementById("chatButton").addEventListener("click", () => {
-      alert("👋 Hi there! Our live support feature is coming soon. Stay tuned!");
-    });
-  </script>
+  <script src="main.js"></script>
 
 </body>
 

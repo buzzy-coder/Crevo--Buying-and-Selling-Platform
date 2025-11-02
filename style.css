@@ -13,19 +13,20 @@ body {
   position: relative;
 }
 
-/* === Scroll Overlay === */
-.scroll-overlay {
+/* === Smooth Scroll Overlay === */
+#scrollOverlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
-  z-index: 0;
+  z-index: -1;
   background: linear-gradient(135deg, #fce1ec, #e5d4ff);
-  opacity: 0.6;
-  transition: background 1s ease-in-out;
+  transition: background 1.5s ease, opacity 0.8s ease;
+  opacity: 0.6; /* softer look — visible but not fading sections */
+  pointer-events: none;
 }
+
 
 header,
 .hero-section,
@@ -168,6 +169,45 @@ nav a:hover {
   transform: rotate(2deg);
 }
 
+/* === HERO IMAGE SLIDER === */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 380px;
+  margin: 50px auto 0;
+  overflow: hidden;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.hero-slider .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 1.2s ease-in-out;
+}
+
+.hero-slider .slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.hero-slider .slide.prev {
+  transform: translateX(-100%);
+}
+
+.hero-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+
 @media (max-width: 900px) {
   .hero-container {
     flex-direction: column-reverse;
@@ -267,7 +307,7 @@ nav a:hover {
 #artists {
   margin-top: 100px;
   padding: 80px 80px;
-  background: linear-gradient(135deg, #ede2ff, #cce7ff);
+  background: linear-gradient(135deg, #d1c4e4, #cce7ff);
   text-align: center;
   border-radius: 40px;
   width: 90%;
@@ -313,7 +353,7 @@ nav a:hover {
 
 .artist-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(106, 27, 154, 0.2);
+  box-shadow: 0 10px 25px rgba(103, 46, 138, 0.2);
 }
 
 .artist-card img {
@@ -411,6 +451,96 @@ nav a:hover {
   margin-bottom: 18px;
   cursor: pointer;
 }
+
+/* === BLOGS SECTION (Solid Pastel, Non-Transparent) === */
+.blogs-section {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 80px 10%;
+  background: linear-gradient(135deg, rgba(252, 225, 236, 0.95), rgba(229, 212, 255, 0.95));
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  border-radius: 40px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.blogs-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 60px;
+}
+
+.blogs-text {
+  flex: 1 1 45%;
+}
+
+.blogs-text h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #4a148c;
+  margin-bottom: 20px;
+}
+
+.blogs-text p {
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.blog-btn {
+  background: linear-gradient(90deg, #a78bfa, #fcb1ff);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.blog-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(170, 120, 255, 0.4);
+}
+
+.blogs-image {
+  flex: 1 1 45%;
+  display: flex;
+  justify-content: center;
+}
+
+.blogs-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .blogs-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .blogs-text, .blogs-image {
+    flex: 1 1 100%;
+  }
+  .blogs-text h2 {
+    font-size: 30px;
+  }
+}
+
 
 /* === CONTACT === */
 #contact {
