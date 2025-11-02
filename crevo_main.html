@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +11,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -19,33 +19,27 @@
       background: linear-gradient(135deg, #c7f9cc, #e4c1f9, #a9def9);
       color: #333;
       min-height: 100vh;
-      animation: colorShift 10s infinite alternate ease-in-out;
-      opacity: 0;
-      animation: fadeIn 2s ease-in-out forwards, colorShift 10s infinite alternate ease-in-out;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
+    /* === Pastel Scroll Overlay === */
+    .scroll-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: linear-gradient(135deg, #fce1ec, #e5d4ff); /* home pastel */
+      opacity: 0.6;
+      transition: background 1s ease-in-out;
     }
 
-    @keyframes colorShift {
-      0% {
-        background: linear-gradient(135deg, #c7f9cc, #e4c1f9, #a9def9);
-      }
-
-      50% {
-        background: linear-gradient(135deg, #fbc4ab, #ffdab9, #e4c1f9);
-      }
-
-      100% {
-        background: linear-gradient(135deg, #a0c4ff, #bdb2ff, #ffc6ff);
-      }
+    header, .main-content, #gallery, #contact, footer {
+      position: relative;
+      z-index: 5;
     }
 
     header {
@@ -53,6 +47,11 @@
       justify-content: space-between;
       align-items: center;
       padding: 25px 80px;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     header h2 {
@@ -76,6 +75,7 @@
     .main-content {
       text-align: center;
       margin-top: 60px;
+      padding: 0 20px;
     }
 
     .main-content h1 {
@@ -173,29 +173,154 @@
       background: linear-gradient(90deg, #89f7fe, #66a6ff);
     }
 
+    /* === Gallery Section === */
+    #gallery {
+      margin-top: 120px;
+      text-align: center;
+      padding: 60px 80px;
+    }
+
+    #gallery h2 {
+      font-size: 36px;
+      color: #4a148c;
+      margin-bottom: 40px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 35px;
+      padding: 0 40px;
+    }
+
+    .art-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .art-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .art-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-bottom: 3px solid #e0c3fc;
+    }
+
+    .art-card h3 {
+      color: #6a1b9a;
+      margin-top: 12px;
+    }
+
+    .art-card p {
+      color: #555;
+      font-size: 14px;
+      margin: 4px 0 10px;
+    }
+
+    .price {
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .buy-btn {
+      background: linear-gradient(90deg, #a78bfa, #fcb1ff);
+      border: none;
+      border-radius: 20px;
+      padding: 8px 18px;
+      color: white;
+      font-weight: 600;
+      margin-bottom: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .buy-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(123,44,191,0.4);
+    }
+
+    /* === Contact Section === */
+    #contact {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      margin: 100px auto 60px;
+      width: 85%;
+      padding: 60px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    #contact h2 {
+      color: #6a1b9a;
+      font-size: 30px;
+      margin-bottom: 25px;
+    }
+
+    #contact p {
+      color: #444;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .contact-details {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 60px;
+    }
+
+    .contact-card {
+      background: white;
+      border-radius: 20px;
+      width: 260px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-card h3 {
+      color: #6a1b9a;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
     footer {
       text-align: center;
-      margin-top: 100px;
       font-size: 14px;
       color: #444;
-      padding-bottom: 20px;
+      padding-bottom: 25px;
     }
   </style>
 </head>
 
 <body>
+  <div class="scroll-overlay" id="scrollOverlay"></div>
+
   <header>
     <h2>🎨 Crevo</h2>
     <nav>
       <a href="#">Home</a>
-      <a href="#">Artists</a>
-      <a href="#">Contact</a>
-      <a href="#">Gallery</a>
-      <a href="#">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <div class="main-content">
+  <div class="main-content" id="home">
     <h1>Welcome to <span>Crevo Marketplace</span></h1>
     <p>Choose how you'd like to get started</p>
 
@@ -203,22 +328,101 @@
       <div class="card">
         <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Buyer Icon">
         <h3>I Want To Buy</h3>
-        <p>Browse creative artworks from talented artists worldwide. Secure payments & track shipments easily.</p>
+        <p>Browse creative artworks from talented artists worldwide.</p>
         <a class="buyer-btn" href="buyer.html">Start as a Buyer</a>
       </div>
 
       <div class="card">
         <img src="https://cdn-icons-png.flaticon.com/512/3593/3593440.png" alt="Seller Icon">
         <h3>I Want To Sell</h3>
-        <p>Share your art and reach thousands of collectors globally. Showcase and track your earnings.</p>
+        <p>Share your art and reach thousands of collectors globally.</p>
         <a class="seller-btn" href="seller.html">Register as a Seller</a>
       </div>
     </div>
   </div>
 
+  <section id="gallery">
+    <h2>🎨 Featured Artworks</h2>
+    <div class="gallery-grid">
+      <div class="art-card">
+        <img src="https://images.unsplash.com/photo-1504198266285-165a04bfb8c4?auto=format&fit=crop&w=600&q=80" alt="Dreamy Landscape">
+        <h3>Dreamy Landscape</h3>
+        <p>By <b>Aarav Sharma</b></p>
+        <p class="price">₹2,499</p>
+        <button class="buy-btn">View Details</button>
+      </div>
+
+      <div class="art-card">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80" alt="Modern Portrait">
+        <h3>Modern Portrait</h3>
+        <p>By <b>Elena Kapoor</b></p>
+        <p class="price">₹3,999</p>
+        <button class="buy-btn">View Details</button>
+      </div>
+
+      <div class="art-card">
+        <img src="https://images.unsplash.com/photo-1601758123927-194d7a9b3a2d?auto=format&fit=crop&w=600&q=80" alt="Watercolor Bloom">
+        <h3>Watercolor Bloom</h3>
+        <p>By <b>Ritu Mehta</b></p>
+        <p class="price">₹1,899</p>
+        <button class="buy-btn">View Details</button>
+      </div>
+
+      <div class="art-card">
+        <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=600&q=80" alt="Digital Fantasy">
+        <h3>Digital Fantasy</h3>
+        <p>By <b>Aditya Verma</b></p>
+        <p class="price">₹4,299</p>
+        <button class="buy-btn">View Details</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact & Support</h2>
+    <p>Have questions or need assistance? Reach out to our support team anytime!</p>
+
+    <div class="contact-details">
+      <div class="contact-card">
+        <h3>📧 Email Support</h3>
+        <p>support@crevo.com</p>
+        <p>info@crevo.com</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>📞 Phone</h3>
+        <p>+91 98765 43210</p>
+        <p>Mon–Fri, 9 AM–6 PM</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>📍 Office</h3>
+        <p>Bhubaneswar, Odisha</p>
+        <p>India, 751001</p>
+      </div>
+    </div>
+  </section>
+
   <footer>
     © 2025 Crevo | Crafted for Artists by Artists
   </footer>
-</body>
 
+  <script>
+    const overlay = document.getElementById('scrollOverlay');
+    const galleryTop = document.getElementById('gallery').offsetTop - 200;
+    const contactTop = document.getElementById('contact').offsetTop - 200;
+
+    window.addEventListener('scroll', () => {
+      let scrollY = window.scrollY;
+
+      if (scrollY < galleryTop) {
+        overlay.style.background = 'linear-gradient(135deg, #fce1ec, #e5d4ff)'; // Home: pink-lavender
+      } else if (scrollY >= galleryTop && scrollY < contactTop) {
+        overlay.style.background = 'linear-gradient(135deg, #c6e6ff, #dcd0ff)'; // Gallery: blue-violet
+      } else {
+        overlay.style.background = 'linear-gradient(135deg, #d0fff2, #b3f3e6)'; // Contact: mint-aqua
+      }
+    });
+  </script>
+</body>
 </html>
