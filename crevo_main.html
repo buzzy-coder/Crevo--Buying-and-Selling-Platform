@@ -1,329 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crevo Marketplace</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #c7f9cc, #e4c1f9, #a9def9);
-      color: #333;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* === Pastel Scroll Overlay === */
-    .scroll-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      background: linear-gradient(135deg, #fce1ec, #e5d4ff); /* home pastel */
-      opacity: 0.6;
-      transition: background 1s ease-in-out;
-    }
-
-    header, .main-content, #gallery, #contact, footer {
-      position: relative;
-      z-index: 5;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 25px 80px;
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(8px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    header h2 {
-      color: #6a1b9a;
-      font-weight: 700;
-      font-size: 32px;
-    }
-
-    nav a {
-      margin: 0 20px;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #6a1b9a;
-    }
-
-    .main-content {
-      text-align: center;
-      margin-top: 60px;
-      padding: 0 20px;
-    }
-
-    .main-content h1 {
-      font-size: 42px;
-      color: #111;
-    }
-
-    .main-content h1 span {
-      color: #6a1b9a;
-    }
-
-    .main-content p {
-      color: #555;
-      margin: 15px 0 50px;
-    }
-
-    .cards {
-      display: flex;
-      justify-content: center;
-      gap: 50px;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      background: white;
-      padding: 40px 30px;
-      border-radius: 20px;
-      width: 300px;
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
-      background: linear-gradient(135deg, #fdfbfb, #ebedee);
-    }
-
-    .card img {
-      width: 70px;
-      height: 70px;
-    }
-
-    .card h3 {
-      color: #6a1b9a;
-      margin-top: 15px;
-      font-size: 22px;
-    }
-
-    .card p {
-      font-size: 14px;
-      color: #555;
-      margin: 10px 0 25px;
-    }
-
-    a {
-      border: none;
-      outline: none;
-      padding: 12px 20px;
-      border-radius: 30px;
-      font-size: 15px;
-      cursor: pointer;
-      color: white;
-      font-weight: 600;
-      transition: transform 0.3s ease;
-    }
-
-    a:hover {
-      transform: scale(1.05);
-    }
-
-    .buyer-btn,
-    .seller-btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .buyer-btn:hover,
-    .seller-btn:hover {
-      background-color: #0056b3;
-    }
-
-    .buyer-btn {
-      background: linear-gradient(90deg, #ff9a9e, #fad0c4);
-    }
-
-    .seller-btn {
-      background: linear-gradient(90deg, #89f7fe, #66a6ff);
-    }
-
-    /* === Gallery Section === */
-    #gallery {
-      margin-top: 120px;
-      text-align: center;
-      padding: 60px 80px;
-    }
-
-    #gallery h2 {
-      font-size: 36px;
-      color: #4a148c;
-      margin-bottom: 40px;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 35px;
-      padding: 0 40px;
-    }
-
-    .art-card {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .art-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-    }
-
-    .art-card img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      border-bottom: 3px solid #e0c3fc;
-    }
-
-    .art-card h3 {
-      color: #6a1b9a;
-      margin-top: 12px;
-    }
-
-    .art-card p {
-      color: #555;
-      font-size: 14px;
-      margin: 4px 0 10px;
-    }
-
-    .price {
-      font-weight: 600;
-      color: #222;
-      margin-bottom: 10px;
-    }
-
-    .buy-btn {
-      background: linear-gradient(90deg, #a78bfa, #fcb1ff);
-      border: none;
-      border-radius: 20px;
-      padding: 8px 18px;
-      color: white;
-      font-weight: 600;
-      margin-bottom: 18px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .buy-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px rgba(123,44,191,0.4);
-    }
-
-    /* === Contact Section === */
-    #contact {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(10px);
-      border-radius: 30px;
-      margin: 100px auto 60px;
-      width: 85%;
-      padding: 60px;
-      text-align: center;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    #contact h2 {
-      color: #6a1b9a;
-      font-size: 30px;
-      margin-bottom: 25px;
-    }
-
-    #contact p {
-      color: #444;
-      margin-bottom: 25px;
-      line-height: 1.6;
-    }
-
-    .contact-details {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 60px;
-    }
-
-    .contact-card {
-      background: white;
-      border-radius: 20px;
-      width: 260px;
-      padding: 25px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: 0.3s;
-    }
-
-    .contact-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    }
-
-    .contact-card h3 {
-      color: #6a1b9a;
-      margin-bottom: 10px;
-      font-size: 18px;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 14px;
-      color: #444;
-      padding-bottom: 25px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
+<!-- Floating Support Chat Button -->
+<div class="chat-support">
+  <button id="chatButton">
+    💬
+  </button>
+</div>
 
 <body>
   <div class="scroll-overlay" id="scrollOverlay"></div>
 
   <header>
-    <h2>🎨 Crevo</h2>
+    <h2 class="brand">
+      <img src="logo.png" alt="Crevo Logo" class="logo"> Crevo
+    </h2>
+
     <nav>
       <a href="#">Home</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
+      <a href="#login" class="login-btn">Login</a>
     </nav>
   </header>
 
-  <div class="main-content" id="home">
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="home">
+    <div class="hero-container">
+      <div class="hero-text">
+        <h1><span>Empower Your Art</span> with Crevo</h1>
+        <p>Showcase your creativity, connect with art lovers, and sell your work — all in one beautiful pastel-themed
+          space.</p>
+        <a href="#gallery" class="cta-btn">Explore Gallery</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=80"
+          alt="Creative Art">
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGIN SECTION (OLD HOMEPAGE) -->
+  <div class="main-content" id="login">
     <h1>Welcome to <span>Crevo Marketplace</span></h1>
     <p>Choose how you'd like to get started</p>
-
     <div class="cards">
       <div class="card">
         <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Buyer Icon">
@@ -331,7 +59,6 @@
         <p>Browse creative artworks from talented artists worldwide.</p>
         <a class="buyer-btn" href="buyer.html">Start as a Buyer</a>
       </div>
-
       <div class="card">
         <img src="https://cdn-icons-png.flaticon.com/512/3593/3593440.png" alt="Seller Icon">
         <h3>I Want To Sell</h3>
@@ -341,11 +68,53 @@
     </div>
   </div>
 
+  <!-- === FEATURED ARTISTS SECTION === -->
+  <section id="artists">
+    <h2>Featured Artists</h2>
+    <p class="section-intro">Meet some of the creative minds behind our most loved artworks.</p>
+
+    <div class="artist-grid">
+      <div class="artist-card">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=300&q=80"
+          alt="Artist 1">
+        <h3>Elena Kapoor</h3>
+        <p>Digital Illustrator • Mumbai</p>
+        <a href="#" class="artist-btn">View Profile</a>
+      </div>
+
+      <div class="artist-card">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80"
+          alt="Artist 2">
+        <h3>Ritu Mehta</h3>
+        <p>Watercolor Specialist • Delhi</p>
+        <a href="#" class="artist-btn">View Profile</a>
+      </div>
+
+      <div class="artist-card">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80"
+          alt="Artist 3">
+        <h3>Arav Sharma</h3>
+        <p>Concept Artist • Bengaluru</p>
+        <a href="#" class="artist-btn">View Profile</a>
+      </div>
+
+      <div class="artist-card">
+        <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?auto=format&fit=crop&w=300&q=80"
+          alt="Artist 4">
+        <h3>Aditya Verma</h3>
+        <p>3D Visual Designer • Pune</p>
+        <a href="#" class="artist-btn">View Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rest of your gallery, contact, and footer remain unchanged -->
   <section id="gallery">
     <h2>🎨 Featured Artworks</h2>
     <div class="gallery-grid">
       <div class="art-card">
-        <img src="https://images.unsplash.com/photo-1504198266285-165a04bfb8c4?auto=format&fit=crop&w=600&q=80" alt="Dreamy Landscape">
+        <img src="https://images.unsplash.com/photo-1504198266285-165a04bfb8c4?auto=format&fit=crop&w=600&q=80"
+          alt="Dreamy Landscape">
         <h3>Dreamy Landscape</h3>
         <p>By <b>Aarav Sharma</b></p>
         <p class="price">₹2,499</p>
@@ -353,7 +122,8 @@
       </div>
 
       <div class="art-card">
-        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80" alt="Modern Portrait">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80"
+          alt="Modern Portrait">
         <h3>Modern Portrait</h3>
         <p>By <b>Elena Kapoor</b></p>
         <p class="price">₹3,999</p>
@@ -361,7 +131,8 @@
       </div>
 
       <div class="art-card">
-        <img src="https://images.unsplash.com/photo-1601758123927-194d7a9b3a2d?auto=format&fit=crop&w=600&q=80" alt="Watercolor Bloom">
+        <img src="https://images.unsplash.com/photo-1601758123927-194d7a9b3a2d?auto=format&fit=crop&w=600&q=80"
+          alt="Watercolor Bloom">
         <h3>Watercolor Bloom</h3>
         <p>By <b>Ritu Mehta</b></p>
         <p class="price">₹1,899</p>
@@ -369,7 +140,8 @@
       </div>
 
       <div class="art-card">
-        <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=600&q=80" alt="Digital Fantasy">
+        <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=600&q=80"
+          alt="Digital Fantasy">
         <h3>Digital Fantasy</h3>
         <p>By <b>Aditya Verma</b></p>
         <p class="price">₹4,299</p>
@@ -402,27 +174,40 @@
       </div>
     </div>
   </section>
-
-  <footer>
-    © 2025 Crevo | Crafted for Artists by Artists
-  </footer>
+  <footer>© 2025 Crevo | Crafted for Artists by Artists</footer>
 
   <script>
     const overlay = document.getElementById('scrollOverlay');
     const galleryTop = document.getElementById('gallery').offsetTop - 200;
     const contactTop = document.getElementById('contact').offsetTop - 200;
+    const header = document.querySelector("header");
+    const hero = document.querySelector(".hero-section");
 
     window.addEventListener('scroll', () => {
       let scrollY = window.scrollY;
+      const heroHeight = hero.offsetHeight - 80;
 
+      // Background scroll effect
       if (scrollY < galleryTop) {
-        overlay.style.background = 'linear-gradient(135deg, #fce1ec, #e5d4ff)'; // Home: pink-lavender
+        overlay.style.background = 'linear-gradient(135deg, #fce1ec, #e5d4ff)';
       } else if (scrollY >= galleryTop && scrollY < contactTop) {
-        overlay.style.background = 'linear-gradient(135deg, #c6e6ff, #dcd0ff)'; // Gallery: blue-violet
+        overlay.style.background = 'linear-gradient(135deg, #c6e6ff, #dcd0ff)';
       } else {
-        overlay.style.background = 'linear-gradient(135deg, #d0fff2, #b3f3e6)'; // Contact: mint-aqua
+        overlay.style.background = 'linear-gradient(135deg, #d0fff2, #b3f3e6)';
+      }
+
+      // Navbar hide/show logic
+      if (scrollY > heroHeight) {
+        header.classList.add("hidden");  // Hide navbar when scrolled below hero
+      } else {
+        header.classList.remove("hidden"); // Show navbar on hero
       }
     });
+    document.getElementById("chatButton").addEventListener("click", () => {
+      alert("👋 Hi there! Our live support feature is coming soon. Stay tuned!");
+    });
   </script>
+
 </body>
+
 </html>
