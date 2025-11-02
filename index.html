@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crevo Marketplace</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<!-- Floating Support Chat Button -->
+<div class="chat-support">
+  <button id="chatButton">
+    💬
+  </button>
+</div>
+
+<body>
+  <div class="scroll-overlay" id="scrollOverlay"></div>
+
+  <header>
+    <h2>🎨 Crevo</h2>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a href="#login" class="login-btn">Login</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="home">
+    <div class="hero-container">
+      <div class="hero-text">
+        <h1><span>Empower Your Art</span> with Crevo</h1>
+        <p>Showcase your creativity, connect with art lovers, and sell your work — all in one beautiful pastel-themed
+          space.</p>
+        <a href="#gallery" class="cta-btn">Explore Gallery</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=80"
+          alt="Creative Art">
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGIN SECTION (OLD HOMEPAGE) -->
+  <div class="main-content" id="login">
+    <h1>Welcome to <span>Crevo Marketplace</span></h1>
+    <p>Choose how you'd like to get started</p>
+    <div class="cards">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Buyer Icon">
+        <h3>I Want To Buy</h3>
+        <p>Browse creative artworks from talented artists worldwide.</p>
+        <a class="buyer-btn" href="buyer.html">Start as a Buyer</a>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3593/3593440.png" alt="Seller Icon">
+        <h3>I Want To Sell</h3>
+        <p>Share your art and reach thousands of collectors globally.</p>
+        <a class="seller-btn" href="seller.html">Register as a Seller</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rest of your gallery, contact, and footer remain unchanged -->
+  <section id="gallery">
+    <h2>🎨 Featured Artworks</h2>
+    <div class="gallery-grid">
+      <div class="art-card">
+        <img src="https://images.unsplash.com/photo-1504198266285-165a04bfb8c4?auto=format&fit=crop&w=600&q=80"
+          alt="Dreamy Landscape">
+        <h3>Dreamy Landscape</h3>
+        <p>By <b>Aarav Sharma</b></p>
+        <p class="price">₹2,499</p>
+        <button class="buy-btn">View Details</button>
+      </div>
+
+      <div class="art-card">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80"
+          alt="Modern Portrait">
+        <h3>Modern Portrait</h3>
+        <p>By <b>Elena Kapoor</b></p>
+        <p class="price">₹3,999</p>
+        <button class="buy-btn">View Details</button>
+      </div>
+
+      <div class="art-card">
+        <img src="https://images.unsplash.com/photo-1601758123927-194d7a9b3a2d?auto=format&fit=crop&w=600&q=80"
+          alt="Watercolor Bloom">
+        <h3>Watercolor Bloom</h3>
+        <p>By <b>Ritu Mehta</b></p>
+        <p class="price">₹1,899</p>
+        <button class="buy-btn">View Details</button>
+      </div>
+
+      <div class="art-card">
+        <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=600&q=80"
+          alt="Digital Fantasy">
+        <h3>Digital Fantasy</h3>
+        <p>By <b>Aditya Verma</b></p>
+        <p class="price">₹4,299</p>
+        <button class="buy-btn">View Details</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact & Support</h2>
+    <p>Have questions or need assistance? Reach out to our support team anytime!</p>
+
+    <div class="contact-details">
+      <div class="contact-card">
+        <h3>📧 Email Support</h3>
+        <p>support@crevo.com</p>
+        <p>info@crevo.com</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>📞 Phone</h3>
+        <p>+91 98765 43210</p>
+        <p>Mon–Fri, 9 AM–6 PM</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>📍 Office</h3>
+        <p>Bhubaneswar, Odisha</p>
+        <p>India, 751001</p>
+      </div>
+    </div>
+  </section>
+  <footer>© 2025 Crevo | Crafted for Artists by Artists</footer>
+
+  <script>
+    const overlay = document.getElementById('scrollOverlay');
+    const galleryTop = document.getElementById('gallery').offsetTop - 200;
+    const contactTop = document.getElementById('contact').offsetTop - 200;
+    const header = document.querySelector("header");
+    const hero = document.querySelector(".hero-section");
+
+    window.addEventListener('scroll', () => {
+      let scrollY = window.scrollY;
+      const heroHeight = hero.offsetHeight - 80;
+
+      // Background scroll effect
+      if (scrollY < galleryTop) {
+        overlay.style.background = 'linear-gradient(135deg, #fce1ec, #e5d4ff)';
+      } else if (scrollY >= galleryTop && scrollY < contactTop) {
+        overlay.style.background = 'linear-gradient(135deg, #c6e6ff, #dcd0ff)';
+      } else {
+        overlay.style.background = 'linear-gradient(135deg, #d0fff2, #b3f3e6)';
+      }
+
+      // Navbar hide/show logic
+      if (scrollY > heroHeight) {
+        header.classList.add("hidden");  // Hide navbar when scrolled below hero
+      } else {
+        header.classList.remove("hidden"); // Show navbar on hero
+      }
+    });
+     document.getElementById("chatButton").addEventListener("click", () => {
+    alert("👋 Hi there! Our live support feature is coming soon. Stay tuned!");
+  });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crevo | Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fde2e4, #e2f0cb, #cddafd);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+      color: #333;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 80px;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h2 {
+      color: #6a1b9a;
+      font-weight: 700;
+      font-size: 30px;
+    }
+
+    nav a {
+      margin: 0 18px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #6a1b9a;
+    }
+
+    .search-bar {
+      margin: 30px auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 350px;
+      padding: 10px 15px;
+      border-radius: 25px;
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .search-bar input:focus {
+      box-shadow: 0 0 10px rgba(123,44,191,0.3);
+    }
+
+    .gallery-section {
+      padding: 40px 80px;
+    }
+
+    .gallery-title {
+      text-align: center;
+      font-size: 36px;
+      color: #4a148c;
+      margin-bottom: 40px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 35px;
+    }
+
+    .art-card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .art-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    }
+
+    .art-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-bottom: 3px solid #e0c3fc;
+    }
+
+    .art-card h3 {
+      color: #6a1b9a;
+      margin: 12px 0 5px;
+      font-size: 18px;
+    }
+
+    .art-card p {
+      color: #555;
+      font-size: 14px;
+      padding: 0 10px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    .buy-btn {
+      background: linear-gradient(90deg, #a78bfa, #fcb1ff);
+      border: none;
+      border-radius: 20px;
+      padding: 8px 20px;
+      color: white;
+      font-weight: 600;
+      margin-bottom: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .buy-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(123,44,191,0.4);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2>🎨 Crevo</h2>
+    <nav>
+      <a href="crevo_main.html">Home</a>
+      <a href="#">Gallery</a>
+      <a href="#">Artists</a>
+      <a href="#">Contact</a>
+      <a href="buyer.html">Login</a>
+    </nav>
+  </header>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search artworks, artists, or styles...">
+  </div>
+
+  <section class="gallery-section">
+    <h1 class="gallery-title">Featured Artworks</h1>
+    <div class="gallery-grid">
+      <div class="art-card">
+        <img src="https://i.ibb.co/8BvV8nD/art1.jpg" alt="Abstract Landscape">
+        <h3>Dreamy Landscape</h3>
+        <p>By <b>Aarav Sharma</b></p>
+        <p class="price">₹2,499</p>
+        <button class="buy-btn">View Details</button>
+      </div>
+
+      <div class="art-card">
+        <img src="https://i.ibb.co/z6hV0R2/art2.jpg" alt="Modern Portrait">
+        <h3>Modern Portrait</h3>
+        <p>By <b>Elena Kapoor</b></p>
+        <p class="price">₹3,999</p>
+        <button class="buy-btn">View Details</button>
+      </div>
+
+      <div class="art-card">
+        <img src="https://i.ibb.co/x3J4zSp/art3.jpg" alt="Watercolor Bloom">
+        <h3>Watercolor Bloom</h3>
+        <p>By <b>Ritu Mehta</b></p>
+        <p class="price">₹1,899</p>
+        <button class="buy-btn">View Details</button>
+      </div>
+
+      <div class="art-card">
+        <img src="https://i.ibb.co/JpqTTcc/art4.jpg" alt="Digital Fantasy">
+        <h3>Digital Fantasy</h3>
+        <p>By <b>Aditya Verma</b></p>
+        <p class="price">₹4,299</p>
+        <button class="buy-btn">View Details</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Crevo | Where Art Finds Its Voice
+  </footer>
+</body>
+</html>
