@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crevo | Orders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent: #ff6f00;
+      --light-accent: #fff7ec;
+      --hover-bg: #ffe0c2;
+      --bg: #fffaf3;
+      --border: #f2e6da;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      display: flex;
+      background: var(--bg);
+      min-height: 100vh;
+      color: #333;
+    }
+
+    /* ====== SIDEBAR ====== */
+    .sidebar {
+      width: 270px;
+      background: #fff;
+      height: 100vh;
+      padding: 30px 20px;
+      box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .menu a {
+     display: block;
+      font-size: 20px;
+      padding: 18px 25px;
+      margin: 10px 0;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #333;
+      transition: 0.2s;
+    }
+
+    .menu a.active {
+      background-color: #ff7f3f;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .menu a:hover {
+      background-color: var(--hover-bg);
+      color: var(--accent);
+    }
+
+    /* Bottom Profile Section */
+    .sidebar-profile {
+      display: flex;
+      align-items: center;
+      background: var(--light-accent);
+      padding: 10px 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(255, 150, 50, 0.15);
+      margin-top: auto;
+      gap: 10px;
+    }
+
+    .sidebar-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ffb347;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .profile-info .name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .view-profile-link {
+      font-size: 12px;
+      color: #ff8b1f;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .view-profile-link:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      font-size: 14px;
+      color: #999;
+      text-align: center;
+      padding-bottom: 10px;
+      margin-top: 15px;
+    }
+
+    /* ====== MAIN SECTION ====== */
+    main {
+      flex: 1;
+      margin-left: 300px;
+      padding: 3rem;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      font-size: 1.1rem;
+    }
+
+    th,
+    td {
+      padding: 1.2rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background-color: #fff3eb;
+      color: var(--accent);
+    }
+
+    tr:hover {
+      background: #fff7f0;
+    }
+
+    .status {
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .completed {
+      background: #2ecc71;
+    }
+
+    .pending {
+      background: #f39c12;
+    }
+
+    .processing {
+      background: #3498db;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        margin-left: 0;
+        padding: 1.5rem;
+      }
+
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      .menu a {
+        padding: 10px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <aside class="sidebar">
+    <div>
+      <div class="logo">Crevo</div>
+      <div class="menu">
+        <a href="Dashboard.html">Dashboard</a>
+        <a href="product.html">Products</a>
+        <a href="orders.html" class="active">Orders</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="payment.html">Payments</a>
+        <a href="settings.html">Settings</a>
+      </div>
+    </div>
+
+    <div class="sidebar-profile">
+      <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=500&q=80"
+        alt="Seller" class="sidebar-avatar">
+      <div class="profile-info">
+        <p class="name">Riya Sharma</p>
+        <a href="seller_profile.html" class="view-profile-link">View Profile</a>
+      </div>
+    </div>
+
+    <div class="footer">© 2025 Crevo</div>
+  </aside>
+
+  <main>
+    <h1>Order Management</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Product</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#ORD-7250</td>
+          <td>Sarah Johnson</td>
+          <td>Golden Horizon</td>
+          <td>$420</td>
+          <td><span class="status completed">Completed</span></td>
+        </tr>
+        <tr>
+          <td>#ORD-7249</td>
+          <td>Michael Brown</td>
+          <td>Crimson Bloom</td>
+          <td>$540</td>
+          <td><span class="status processing">Processing</span></td>
+        </tr>
+        <tr>
+          <td>#ORD-7248</td>
+          <td>Riya Kapoor</td>
+          <td>Urban Nights</td>
+          <td>$380</td>
+          <td><span class="status pending">Pending</span></td>
+        </tr>
+        <tr>
+          <td>#ORD-7247</td>
+          <td>Dev Sharma</td>
+          <td>Desert Mirage</td>
+          <td>$490</td>
+          <td><span class="status completed">Completed</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+
+</html>

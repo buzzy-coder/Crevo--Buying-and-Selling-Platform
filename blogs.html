@@ -4,27 +4,127 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crevo Blogs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     body {
+      margin: 0;
       font-family: 'Poppins', sans-serif;
       background: #faf9ff;
       color: #333;
-      text-align: center;
-      padding: 100px 20px;
     }
-    h1 {
-      color: #6a1b9a;
+    header {
+      padding: 20px 40px;
+      background: #f4e9ff;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      color: #4a148c;
       font-size: 2.5rem;
     }
-    p {
-      margin-top: 20px;
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    }
+    .blog-card img {
+      width: 200px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+    .blog-content {
+      flex: 1;
+    }
+    .blog-content h2 {
+      margin: 0 0 10px;
+      color: #6a1b9a;
+      font-size: 1.6rem;
+    }
+    .blog-content p {
+      margin: 0 0 15px;
+      line-height: 1.6;
       color: #555;
-      font-size: 1.1rem;
+    }
+    .blog-content a {
+      display: inline-block;
+      padding: 8px 20px;
+      background: linear-gradient(90deg, #a78bfa, #fcb1ff);
+      color: white;
+      text-decoration: none;
+      border-radius: 20px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+    .blog-content a:hover {
+      background: linear-gradient(90deg, #926be3, #e49aff);
+    }
+    @media (max-width: 800px) {
+      .blog-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      .blog-card img {
+        width: 100%;
+        height: auto;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Crevo Blogs</h1>
-  <p>Here, we’ll share artist stories, art tips, and creative inspirations.</p>
+
+<header>
+  <h1>Crevo – Art & Inspiration Blog</h1>
+</header>
+
+<div class="container">
+
+  <!-- Blog Card 1 -->
+  <div class="blog-card">
+    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Contemporary Art Feature">
+    <div class="blog-content">
+      <h2>Exploring the World of Contemporary Art</h2>
+      <p>Discover how contemporary artists are redefining tradition and bringing fresh ideas to the art world. Dive into trends, interviews, and showcases from around the globe.</p>
+      <a href="https://www.thisiscolossal.com/" target="_blank" rel="noopener">Read More</a>
+    </div>
+  </div>
+
+  <!-- Blog Card 2 -->
+  <div class="blog-card">
+    <img src="https://images.unsplash.com/photo-1526318472351-bc6f013210ae?auto=format&fit=crop&w=600&q=80" alt="Artist Interviews & Techniques">
+    <div class="blog-content">
+      <h2>Techniques & Stories from Working Artists</h2>
+      <p>Get an inside look at how professional artists create, experiment and grow their craft — from studio practices to creative inspirations and business advice. </p>
+      <a href="https://www.jacksonsart.com/blog/" target="_blank" rel="noopener">Read More</a>
+    </div>
+  </div>
+
+  <!-- Blog Card 3 -->
+  <div class="blog-card">
+    <img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=600&q=80" alt="Art Business & Industry">
+    <div class="blog-content">
+      <h2>Building a Creative Career: Art Business Insights</h2>
+      <p>Learn how artists turn their passion into livelihood. Explore marketing tips, gallery advice, and art-world dynamics that help creatives thrive. </p>
+      <a href="https://artbusinessnews.com/2024/06/top-7-art-blogs-podcasts-to-follow/" target="_blank" rel="noopener">Read More</a>
+    </div>
+  </div>
+
+</div>
+
 </body>
 </html>

@@ -7,7 +7,7 @@
   <title>Crevo Marketplace</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  
+
 </head>
 
 <!-- Floating Support Chat Button -->
@@ -17,15 +17,30 @@
   </button>
 </div>
 
+<!-- Chat Window -->
+<div id="chatbot-box">
+  <div class="chat-header">
+    <span>Crevo Support</span>
+    <button id="close-chat">✕</button>
+  </div>
+  <div class="chat-body" id="chat-body">
+    <div class="bot-msg">Hi there 👋! How can we help you today?</div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="user-input" placeholder="Type your message..." />
+    <button id="send-btn">➤</button>
+  </div>
+</div>
+
 <body>
   <div class="scroll-overlay" id="scrollOverlay"></div>
 
-  <header>
+  <header id="header">
     <h2 class="brand">
       <img src="logo.png" alt="Crevo Logo" class="logo"> Crevo
     </h2>
 
-    <nav>
+    <nav class="nav-links">
       <a href="#">Home</a>
       <a href="#gallery">Gallery</a>
       <a href="#artists">Artists</a>

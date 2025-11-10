@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crevo | Analytics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      display: flex;
+      background-color: #fffaf2;
+      color: #333;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 270px;
+      background-color: #fff;
+      height: 100vh;
+      padding: 30px 20px;
+      box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 700;
+      color: #ff6f00;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .nav-item {
+      display: block;
+      font-size: 20px;
+      padding: 18px 25px;
+      margin: 10px 0;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #333;
+      transition: 0.2s;
+    }
+
+    .nav-item.active {
+      background-color: #ff7f3f;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .nav-item:hover {
+      background-color: #ffe0c2;
+      color: #ff6f00;
+    }
+
+    .footer {
+      font-size: 14px;
+      color: #999;
+      text-align: center;
+      padding-bottom: 10px;
+    }
+
+    /* Main */
+    .main {
+      margin-left: 300px;
+      padding: 50px 60px;
+      flex: 1;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin: 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h2 {
+      font-size: 28px;
+      color: #222;
+      margin: 8px 0;
+    }
+
+    .card p {
+      color: #666;
+      font-size: 16px;
+      margin: 0;
+    }
+
+    /* Charts */
+    .chart-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .chart-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .chart-card h3 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .table-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 14px 10px;
+      border-bottom: 1px solid #f3e6d5;
+      font-size: 16px;
+    }
+
+    th {
+      color: #444;
+    }
+
+    /* ===== Sidebar Profile (bottom corner) ===== */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+    }
+
+    .sidebar-profile {
+      display: flex;
+      align-items: center;
+      background: #fff7ec;
+      padding: 10px 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(255, 150, 50, 0.15);
+      margin-top: auto;
+      gap: 10px;
+    }
+
+    .sidebar-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ffb347;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .profile-info .name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: #ff6f00;
+    }
+
+    .view-profile-link {
+      font-size: 12px;
+      color: #ff8b1f;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .view-profile-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Sidebar Profile (bottom corner) ===== */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+    }
+
+    .sidebar-profile {
+      display: flex;
+      align-items: center;
+      background: #fff7ec;
+      padding: 10px 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(255, 150, 50, 0.15);
+      margin-top: auto;
+      gap: 10px;
+    }
+
+    .sidebar-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ffb347;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .profile-info .name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: #ff6f00;
+    }
+
+    .view-profile-link {
+      font-size: 12px;
+      color: #ff8b1f;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .view-profile-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div>
+      <div class="logo">Crevo</div>
+      <a href="Dashboard.html" class="nav-item">Dashboard</a>
+      <a href="product.html" class="nav-item">Products</a>
+      <a href="orders.html" class="nav-item">Orders</a>
+      <a href="analytics.html" class="nav-item active">Analytics</a>
+      <a href="payment.html" class="nav-item">Payments</a>
+      <a href="settings.html" class="nav-item">Settings</a>
+    </div>
+
+    <div class="sidebar-profile">
+      <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=500&q=80"
+        alt="Seller" class="sidebar-avatar">
+      <div class="profile-info">
+        <p class="name">Riya Sharma</p>
+        <a href="seller_profile.html" class="view-profile-link">View Profile</a>
+      </div>
+    </div>
+
+    <div class="footer">© 2025 Crevo</div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <h1>Dashboard Overview</h1>
+    <p>Welcome back, Ayushi! Here's what's happening with your store today.</p>
+
+    <h2 style="margin-top: 30px;">Analytics Overview</h2>
+
+    <div class="cards">
+      <div class="card">
+        <p>Total Sales</p>
+        <h2>$22,500</h2>
+        <p>15 artworks sold</p>
+      </div>
+      <div class="card">
+        <p>Total Visitors</p>
+        <h2>1,992</h2>
+        <p>This month</p>
+      </div>
+      <div class="card">
+        <p>Conversion Rate</p>
+        <h2>3.8%</h2>
+        <p>Performance trend</p>
+      </div>
+      <div class="card">
+        <p>Top Category</p>
+        <h2>Abstract</h2>
+        <p>5.0 rating</p>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-card">
+        <h3>Sales Performance</h3>
+        <canvas id="salesChart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Category Performance</h3>
+        <canvas id="categoryChart"></canvas>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <h3>🏆 Top Sellers</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Artist Name</th>
+            <th>Art Title</th>
+            <th>Sales</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Aarav Mehta</td>
+            <td>Golden Sunrise</td>
+            <td>$4,200</td>
+            <td>⭐ 5.0</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Riya Kapoor</td>
+            <td>Whispers of the Wind</td>
+            <td>$3,800</td>
+            <td>⭐ 4.9</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Dev Sharma</td>
+            <td>Midnight Mirage</td>
+            <td>$3,250</td>
+            <td>⭐ 4.8</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Meera Joshi</td>
+            <td>Crimson Dreams</td>
+            <td>$2,900</td>
+            <td>⭐ 4.7</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Arjun Rao</td>
+            <td>City Lights</td>
+            <td>$2,450</td>
+            <td>⭐ 4.6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <script>
+    // Sales Performance (Smooth Line)
+    const salesCtx = document.getElementById('salesChart').getContext('2d');
+    new Chart(salesCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Sales',
+          data: [1100, 1500, 800, 2000, 1700, 2400],
+          fill: true,
+          backgroundColor: 'rgba(255,134,94,0.2)',
+          borderColor: '#ff7a42',
+          borderWidth: 3,
+          tension: 0.4,
+          pointBackgroundColor: '#ff7a42'
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: '#444', font: { size: 14 } }, grid: { display: false } },
+          y: { beginAtZero: true, ticks: { color: '#666', font: { size: 14 } }, grid: { color: '#f2e6da' } }
+        }
+      }
+    });
+
+    // Category Performance (Bar)
+    const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+    new Chart(categoryCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Abstract', 'Portrait', 'Landscape', 'Still Life'],
+        datasets: [{
+          label: 'Rating',
+          data: [5, 3, 4, 2],
+          backgroundColor: [
+            'rgba(255, 111, 0, 0.4)',
+            'rgba(255, 183, 77, 0.4)',
+            'rgba(255, 145, 188, 0.4)',
+            'rgba(144, 202, 249, 0.4)'
+          ],
+          borderColor: [
+            'rgba(255, 111, 0, 1)',
+            'rgba(255, 183, 77, 1)',
+            'rgba(255, 145, 188, 1)',
+            'rgba(144, 202, 249, 1)'
+          ],
+          borderWidth: 2,
+          borderRadius: 10,
+          barPercentage: 0.6,
+          categoryPercentage: 0.7
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: '#444', font: { size: 14 } }, grid: { display: false } },
+          y: { beginAtZero: true, ticks: { color: '#666', font: { size: 14 } }, grid: { color: '#f2e6da' } }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

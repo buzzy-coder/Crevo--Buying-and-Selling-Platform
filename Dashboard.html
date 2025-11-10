@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crevo | Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      background-color: #fff8f1;
+      color: #222;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 200px;
+      background-color: #fff;
+      height: 100vh;
+      padding: 2.5rem 1.5rem;
+      border-right: 1px solid #eee;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      color: #ff7a3d;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 3rem;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 14px 18px;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .menu a.active,
+    .menu a:hover {
+      background-color: #ff7a3d;
+      color: white;
+    }
+
+    .sidebar-footer {
+      text-align: center;
+      font-size: 15px;
+      color: #aaa;
+      margin-top: 2rem;
+    }
+
+    /* Sidebar Logo */
+    .sidebar-logo {
+      width: 80px;
+      margin: 0 auto 15px;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(255, 122, 61, 0.3);
+    }
+
+    /* Main Section */
+    .main-content {
+      flex: 1;
+      padding: 3rem 4rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #222;
+    }
+
+    .header p {
+      font-size: 16px;
+      color: #666;
+      margin-top: 6px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 10px;
+      padding: 1rem 1.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 16px;
+    }
+
+    .btn-outline {
+      background: #fff;
+      border: 1px solid #ddd;
+      color: #333;
+    }
+
+    .btn-outline:hover {
+      background: #fff3eb;
+      border-color: #ff7a3d;
+    }
+
+    .btn-primary {
+      background: #ff7a3d;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #ff6928;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 2.2rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      border: 1px solid #f3e3d4;
+      text-align: center;
+    }
+
+    .card h2 {
+      font-size: 2.0rem;
+      font-weight: 700;
+      color: #222;
+      margin: 0.5rem 0;
+    }
+
+    .card p {
+      font-size: 1.0rem;
+      color: #666;
+    }
+
+    /* Orders Table */
+    .orders {
+      background: #fff;
+      border-radius: 18px;
+      padding: 2.5rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      border: 1px solid #f3e3d4;
+    }
+
+    .orders-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .orders-header h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .orders-header a {
+      color: #ff7a3d;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 1.2rem;
+      border-bottom: 1px solid #f1f1f1;
+      text-align: left;
+      font-size: 1.1rem;
+    }
+
+    .status {
+      border-radius: 14px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      color: #fff;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .completed {
+      background: #2ecc71;
+    }
+
+    .pending {
+      background: #f39c12;
+    }
+
+    .processing {
+      background: #3498db;
+    }
+
+    /* Bottom Section */
+    .bottom-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .bottom-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 2.2rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      border: 1px solid #f3e3d4;
+    }
+
+    .bottom-card h4 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      color: #333;
+    }
+
+    .bottom-card p {
+      color: #555;
+      font-size: 1.05rem;
+      margin-bottom: 1.2rem;
+    }
+    .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px;
+  background-color: #fff;
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5rem 1.5rem;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.main-content {
+  margin-left: 200px; /* To prevent overlap */
+  padding: 3rem 4rem;
+  flex: 1;
+}
+
+/* Profile section at bottom */
+.sidebar-profile {
+  display: flex;
+  align-items: center;
+  background: #fff7ec;
+  padding: 10px 15px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(255, 150, 50, 0.15);
+  margin-top: auto;
+  gap: 10px;
+}
+
+.sidebar-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffb347;
+}
+
+.profile-info .name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ff6f00;
+}
+
+.view-profile-link {
+  font-size: 12px;
+  color: #ff8b1f;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.view-profile-link:hover {
+  text-decoration: underline;
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+  <div>
+    <h2>Crevo</h2>
+    <div class="menu">
+      <a href="Dashboard.html" class="active">Dashboard</a>
+      <a href="product.html">Products</a>
+      <a href="orders.html">Orders</a>
+      <a href="analytics.html">Analytics</a>
+      <a href="payment.html">Payments</a>
+      <a href="settings.html">Settings</a>
+    </div>
+  </div>
+
+  <!-- Profile Section (bottom corner) -->
+  <div class="sidebar-profile">
+    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=500&q=80"
+      alt="Seller" class="sidebar-avatar">
+    <div class="profile-info">
+      <p class="name">Riya Sharma</p>
+      <a href="seller_profile.html" class="view-profile-link">View Profile</a>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">© 2025 Crevo</div>
+</div>
+
+
+  <!-- Main Section -->
+  <div class="main-content">
+    <div class="header">
+      <div>
+        <h1>Dashboard Overview</h1>
+        <p>Welcome back, Ayushi! Here's what's happening today.</p>
+      </div>
+      <div>
+        <button class="btn btn-outline" onclick="location.href='products.html'">Add Product</button>
+        <button class="btn btn-primary" onclick="location.href='analytics.html'">View Analytics</button>
+      </div>
+    </div>
+
+    <!-- Top Cards -->
+    <div class="cards">
+      <div class="card">
+        <p>Total Sales</p>
+        <h2>₹24,780</h2>
+        <p style="color:green;">+12.5% from last month</p>
+      </div>
+      <div class="card">
+        <p>Total Orders</p>
+        <h2>1,463</h2>
+        <p style="color:green;">+8.2% from last month</p>
+      </div>
+      <div class="card">
+        <p>Total Products</p>
+        <h2>246</h2>
+        <p style="color:purple;">+24 new products</p>
+      </div>
+      <div class="card">
+        <p>Total Customers</p>
+        <h2>892</h2>
+        <p style="color:orange;">+34 new customers</p>
+      </div>
+    </div>
+
+    <!-- Recent Orders -->
+    <div class="orders">
+      <div class="orders-header">
+        <h3>Recent Orders</h3>
+        <a href="orders.html">View All</a>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#ORD-7246</td>
+            <td>Sarah Johnson</td>
+            <td>iPhone 14 Pro</td>
+            <td>₹82,000</td>
+            <td><span class="status completed">Completed</span></td>
+          </tr>
+          <tr>
+            <td>#ORD-7245</td>
+            <td>Michael Brown</td>
+            <td>MacBook Air</td>
+            <td>₹1,29,800</td>
+            <td><span class="status pending">Pending</span></td>
+          </tr>
+          <tr>
+            <td>#ORD-7244</td>
+            <td>Emily Davis</td>
+            <td>AirPods Pro</td>
+            <td>₹22,499</td>
+            <td><span class="status processing">Processing</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="bottom-section">
+      <div class="bottom-card">
+        <h4>Add New Product</h4>
+        <p>Quickly add a new product to your store inventory with title, price, and description.</p>
+        <button class="btn btn-primary" onclick="location.href='products.html'">Add Product</button>
+      </div>
+
+      <div class="bottom-card">
+        <h4>View Analytics</h4>
+        <p>Check detailed analytics about your store performance and traffic trends.</p>
+        <button class="btn btn-outline" onclick="location.href='analytics.html'">View Report</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

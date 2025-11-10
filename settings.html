@@ -2,19 +2,20 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crevo | Seller Profile</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crevo | Seller Settings</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0;
       font-family: 'Poppins', sans-serif;
+      margin: 0;
+      display: flex;
       background-color: #fffaf2;
       color: #333;
-      display: flex;
     }
 
+    /* Sidebar */
     .sidebar {
       width: 270px;
       background-color: #fff;
@@ -64,6 +65,7 @@
       padding-bottom: 10px;
     }
 
+    /* Main */
     .main {
       margin-left: 300px;
       padding: 60px;
@@ -76,97 +78,91 @@
       color: #ff6f00;
     }
 
-    .profile-container {
-      background: #fff;
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
-      max-width: 900px;
-    }
-
-    .profile-header {
-      text-align: center;
+    .subtitle {
+      color: #666;
+      font-size: 18px;
       margin-bottom: 30px;
     }
 
-    .profile-header img {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 10px rgba(255, 150, 50, 0.5);
+    /* Settings Cards */
+    .settings-container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+      padding: 40px;
+      max-width: 900px;
     }
 
-    .profile-header h2 {
+    .settings-section {
+      margin-bottom: 40px;
+    }
+
+    .settings-section h2 {
       color: #ff6f00;
-      margin: 15px 0 5px;
-    }
-
-    .profile-header p {
-      color: #666;
-    }
-
-    .profile-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin: 30px 0;
-    }
-
-    .stat {
-      background: #fff8e1;
-      padding: 20px 40px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(255, 150, 50, 0.1);
-    }
-
-    .stat h3 {
-      color: #ff6f00;
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .stat p {
-      font-size: 20px;
-      font-weight: 600;
-      color: #333;
-    }
-
-    .profile-details {
-      margin-top: 40px;
-    }
-
-    .profile-details h3 {
-      color: #ff6f00;
+      font-size: 26px;
       margin-bottom: 15px;
     }
 
-    .profile-details p {
-      line-height: 1.6;
-      color: #444;
+    label {
+      font-weight: 500;
+      display: block;
+      margin: 12px 0 6px;
     }
 
-    .actions {
-      margin-top: 40px;
-      text-align: center;
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      background: #fffdf9;
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    .toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
     }
 
     .btn {
-      background: linear-gradient(90deg, #ffb347, #ffcc33);
+      background-color: #ff6f00;
       color: #fff;
-      padding: 12px 25px;
+      padding: 14px 28px;
+      font-size: 18px;
       border: none;
-      border-radius: 25px;
+      border-radius: 10px;
       cursor: pointer;
       font-weight: 600;
-      margin: 5px;
-      transition: 0.3s;
+      transition: 0.2s;
     }
 
     .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(255, 150, 50, 0.3);
+      background-color: #e85f00;
+    }
+
+    /* Checkbox styling */
+    .toggle input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #ff7f3f;
+    }
+
+    @media (max-width: 900px) {
+      .main {
+        padding: 30px;
+      }
+
+      .settings-container {
+        padding: 25px;
+      }
     }
 
     /* ===== Sidebar Profile (bottom corner) ===== */
@@ -224,6 +220,7 @@
 
 <body>
 
+  <!-- Sidebar -->
   <div class="sidebar">
     <div>
       <div class="logo">Crevo</div>
@@ -232,9 +229,8 @@
       <a href="orders.html" class="nav-item">Orders</a>
       <a href="analytics.html" class="nav-item">Analytics</a>
       <a href="payment.html" class="nav-item">Payments</a>
-      <a href="settings.html" class="nav-item">Settings</a>
+      <a href="settings.html" class="nav-item active">Settings</a>
     </div>
-
     <div class="sidebar-profile">
       <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=500&q=80"
         alt="Seller" class="sidebar-avatar">
@@ -247,46 +243,59 @@
     <div class="footer">© 2025 Crevo</div>
   </div>
 
+  <!-- Main -->
   <div class="main">
-    <h1>Seller Profile</h1>
-    <div class="profile-container">
-      <div class="profile-header">
-        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=500&q=80"
-          alt="Profile">
-        <h2>Riya Sharma</h2>
-        <p>Modern Art & Clay Artist • Mumbai, India</p>
+    <h1>Account Settings</h1>
+    <div class="subtitle">Manage your personal information, password, and preferences.</div>
+
+    <div class="settings-container">
+
+      <!-- Profile Info -->
+      <div class="settings-section">
+        <h2>Profile Information</h2>
+        <label>Full Name</label>
+        <input type="text" placeholder="e.g., Riya Sharma">
+
+        <label>Email Address</label>
+        <input type="email" placeholder="e.g., riya.art@gmail.com">
+
+        <label>Location</label>
+        <input type="text" placeholder="e.g., Mumbai, India">
+
+        <label>Bio</label>
+        <textarea placeholder="Tell buyers about your art style and experience."></textarea>
       </div>
 
-      <div class="profile-stats">
-        <div class="stat">
-          <h3>Artworks</h3>
-          <p>56</p>
+      <!-- Password -->
+      <div class="settings-section">
+        <h2>Change Password</h2>
+        <label>Current Password</label>
+        <input type="password" placeholder="Enter current password">
+
+        <label>New Password</label>
+        <input type="password" placeholder="Enter new password">
+
+        <label>Confirm New Password</label>
+        <input type="password" placeholder="Confirm new password">
+      </div>
+
+      <!-- Preferences -->
+      <div class="settings-section">
+        <h2>Preferences</h2>
+        <div class="toggle">
+          <input type="checkbox" id="emailNotif" checked>
+          <label for="emailNotif">Receive Email Notifications for Orders</label>
         </div>
-        <div class="stat">
-          <h3>Sales</h3>
-          <p>128</p>
-        </div>
-        <div class="stat">
-          <h3>Followers</h3>
-          <p>980</p>
+        <div class="toggle">
+          <input type="checkbox" id="promoNotif">
+          <label for="promoNotif">Receive Promotions and Announcements</label>
         </div>
       </div>
 
-      <div class="profile-details">
-        <h3>About Me</h3>
-        <p>
-          Hi! I'm Riya, a contemporary artist passionate about blending traditional clay techniques with modern design.
-          Each piece I create reflects the stories of emotion, nature, and culture that inspire my journey.
-        </p>
-      </div>
-
-      <div class="actions">
-        <button class="btn" onclick="window.location.href='settings.html'">Edit Profile</button>
-        <button class="btn" onclick="window.location.href='product.html'">Add Artwork</button>
-      </div>
+      <!-- Save Button -->
+      <button class="btn">Save Changes</button>
     </div>
   </div>
-
 </body>
 
 </html>

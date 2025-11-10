@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crevo | Payments</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      display: flex;
+      background-color: #fffaf2;
+      color: #333;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 270px;
+      background-color: #fff;
+      height: 100vh;
+      padding: 30px 20px;
+      box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 700;
+      color: #ff6f00;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .nav-item {
+      display: block;
+      font-size: 20px;
+      padding: 18px 25px;
+      margin: 10px 0;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #333;
+      transition: 0.2s;
+    }
+
+    .nav-item.active {
+      background-color: #ff7f3f;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .nav-item:hover {
+      background-color: #ffe0c2;
+      color: #ff6f00;
+    }
+
+    .footer {
+      font-size: 14px;
+      color: #999;
+      text-align: center;
+      padding-bottom: 10px;
+    }
+
+    /* Main */
+    .main {
+      margin-left: 300px;
+      padding: 60px;
+      flex: 1;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin: 0;
+    }
+
+    .welcome {
+      font-size: 18px;
+      color: #666;
+      margin-top: 8px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h2 {
+      font-size: 28px;
+      color: #ff6f00;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #666;
+      margin: 5px 0;
+      font-size: 16px;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 40px;
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    th,
+    td {
+      padding: 18px 25px;
+      text-align: left;
+      border-bottom: 1px solid #f3e6d8;
+      font-size: 17px;
+    }
+
+    th {
+      background-color: #fff3e0;
+      color: #333;
+    }
+
+    tr:hover {
+      background-color: #fff7ee;
+    }
+
+    .status {
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .paid {
+      background-color: #c8f7c5;
+      color: #2e7d32;
+    }
+
+    .pending {
+      background-color: #fff3cd;
+      color: #b26a00;
+    }
+
+    .failed {
+      background-color: #f8d7da;
+      color: #a94442;
+    }
+
+    .btn {
+      background-color: #ff6f00;
+      color: #fff;
+      padding: 14px 28px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+      margin-top: 30px;
+    }
+
+    .btn:hover {
+      background-color: #e85f00;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 40px;
+      border-radius: 18px;
+      width: 500px;
+      text-align: left;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content h2 {
+      color: #ff6f00;
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 15px;
+      font-size: 18px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      background: #fff;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+    }
+
+    .cancel-btn {
+      background-color: #ccc;
+      color: #333;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      background-color: #ff6f00;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* ===== Sidebar Profile (bottom corner) ===== */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+    }
+
+    .sidebar-profile {
+      display: flex;
+      align-items: center;
+      background: #fff7ec;
+      padding: 10px 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(255, 150, 50, 0.15);
+      margin-top: auto;
+      gap: 10px;
+    }
+
+    .sidebar-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ffb347;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .profile-info .name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: #ff6f00;
+    }
+
+    .view-profile-link {
+      font-size: 12px;
+      color: #ff8b1f;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .view-profile-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div>
+      <div class="logo">Crevo</div>
+      <a href="Dashboard.html" class="nav-item">Dashboard</a>
+      <a href="products.html" class="nav-item">Products</a>
+      <a href="orders.html" class="nav-item">Orders</a>
+      <a href="analytics.html" class="nav-item">Analytics</a>
+      <a href="payment.html" class="nav-item active">Payments</a>
+      <a href="settings.html" class="nav-item">Settings</a>
+    </div>
+    <div class="sidebar-profile">
+      <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=500&q=80"
+        alt="Seller" class="sidebar-avatar">
+      <div class="profile-info">
+        <p class="name">Riya Sharma</p>
+        <a href="seller_profile.html" class="view-profile-link">View Profile</a>
+      </div>
+    </div>
+
+    <div class="footer">© 2025 Crevo</div>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <h1>Payments Overview</h1>
+    <div class="welcome">Welcome back, Ayushi! Here’s your recent payment summary.</div>
+
+    <div class="cards">
+      <div class="card">
+        <h2>₹12,800</h2>
+        <p>Total Earnings</p>
+      </div>
+      <div class="card">
+        <h2>₹4,500</h2>
+        <p>Pending Payouts</p>
+      </div>
+      <div class="card">
+        <h2>₹8,300</h2>
+        <p>Available Balance</p>
+      </div>
+    </div>
+
+    <button class="btn" id="openModal">Request Payout</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Transaction ID</th>
+          <th>Amount</th>
+          <th>Method</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nov 1, 2025</td>
+          <td>#TXN9821</td>
+          <td>₹2500</td>
+          <td>UPI</td>
+          <td><span class="status paid">Paid</span></td>
+        </tr>
+        <tr>
+          <td>Oct 26, 2025</td>
+          <td>#TXN9765</td>
+          <td>₹1300</td>
+          <td>Bank Transfer</td>
+          <td><span class="status pending">Pending</span></td>
+        </tr>
+        <tr>
+          <td>Oct 18, 2025</td>
+          <td>#TXN9610</td>
+          <td>₹4500</td>
+          <td>UPI</td>
+          <td><span class="status paid">Paid</span></td>
+        </tr>
+        <tr>
+          <td>Oct 3, 2025</td>
+          <td>#TXN9402</td>
+          <td>₹2000</td>
+          <td>UPI</td>
+          <td><span class="status failed">Failed</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Payout Modal -->
+  <div class="modal" id="payoutModal">
+    <div class="modal-content">
+      <h2>Request Payout</h2>
+
+      <label>Payout Amount (₹)</label>
+      <input type="number" placeholder="e.g., 2500">
+
+      <label>Payment Method</label>
+      <select>
+        <option>UPI</option>
+        <option>Bank Transfer</option>
+        <option>Paytm Wallet</option>
+      </select>
+
+      <label>UPI ID / Account Number</label>
+      <input type="text" placeholder="e.g., ayushi@oksbi or 1234567890">
+
+      <label>Additional Notes</label>
+      <textarea rows="3" placeholder="Any message or reference (optional)"></textarea>
+
+      <div class="modal-buttons">
+        <button class="cancel-btn" id="cancelBtn">Cancel</button>
+        <button class="submit-btn" id="submitBtn">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("payoutModal");
+    const openModal = document.getElementById("openModal");
+    const cancelBtn = document.getElementById("cancelBtn");
+    const submitBtn = document.getElementById("submitBtn");
+
+    openModal.onclick = () => modal.style.display = "flex";
+    cancelBtn.onclick = () => modal.style.display = "none";
+    submitBtn.onclick = () => {
+      alert("✅ Payout Request Submitted Successfully!");
+      modal.style.display = "none";
+    };
+    window.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+  </script>
+</body>
+
+</html>
